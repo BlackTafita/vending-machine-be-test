@@ -1,9 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Product } from './product.entity';
-enum UserRoles {
-  BUYER,
-  SELLER,
-}
+import { UserRole } from '../../shared/enums/user-role.enum';
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
@@ -18,8 +16,8 @@ export class User {
   @Column({ nullable: false, default: 0 })
   deposit: number;
 
-  @Column({ enum: [UserRoles.BUYER, UserRoles.SELLER], nullable: false })
-  role: UserRoles;
+  @Column({ enum: [UserRole.BUYER, UserRole.SELLER], nullable: false })
+  role: UserRole;
 
   @OneToMany(() => Product, (product) => product.user)
   products: Product[];

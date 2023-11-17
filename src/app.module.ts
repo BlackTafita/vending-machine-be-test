@@ -3,6 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserModule } from './user/user.module';
+import { User } from './core/entities/user.entity';
+import { Product } from './core/entities/product.entity';
 
 @Module({
   imports: [
@@ -14,8 +17,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
-      autoLoadEntities: true,
+      entities: [User, Product],
+      migrationsTableName: '_migrations',
     }),
+
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
