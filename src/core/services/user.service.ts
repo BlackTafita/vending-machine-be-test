@@ -7,7 +7,7 @@ import {
   FindOneOptions,
   Repository,
 } from 'typeorm';
-import { User } from '../core/entities/user.entity';
+import { User } from '../entities/user.entity';
 
 @Injectable()
 export class UserService {
