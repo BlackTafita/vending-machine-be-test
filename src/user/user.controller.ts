@@ -15,16 +15,17 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Public } from '../shared/decorators/is-public.decorator';
 
 @ApiTags('User')
-@ApiBearerAuth()
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
 
+  @ApiBearerAuth()
   @Get('')
   async getUsers(): Promise<User[]> {
     return this.userService.find({});
   }
 
+  @ApiBearerAuth()
   @Get(':id')
   async getUser(@Param('id') id: string): Promise<User> {
     return this.userService.findOne({ where: { id: Number(id) } });
@@ -36,6 +37,7 @@ export class UserController {
     return this.userService.create(user);
   }
 
+  @ApiBearerAuth()
   @Delete(':id')
   async deleteUser(@Param('id') id: string): Promise<{ status: string }> {
     const result = await this.userService.delete(Number(id));
@@ -44,6 +46,7 @@ export class UserController {
     }
   }
 
+  @ApiBearerAuth()
   @Put(':id')
   async updateUser(
     @Param('id') id: string,
