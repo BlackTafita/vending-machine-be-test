@@ -7,7 +7,6 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
-import * as process from 'process';
 import { IS_PUBLIC_KEY } from '../shared/decorators/is-public.decorator';
 
 @Injectable()
@@ -29,6 +28,7 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException();
     }
     try {
+      console.log(token, process.env.JWT_SECRET);
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.JWT_SECRET,
       });
