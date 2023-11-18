@@ -10,6 +10,6 @@ export class MultiplesBy5Validator implements ValidatorConstraintInterface {
   }
 
   defaultMessage(): string {
-    return 'Cost ($value) should be multiples of 5';
+    return 'Cost should be multiples of 5';
   }
 }
