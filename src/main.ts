@@ -9,6 +9,10 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
+    .addBearerAuth({
+      type: 'http',
+      bearerFormat: 'token',
+    })
     .setTitle('Vending Machine')
     .setDescription('The vending machine API description')
     .setVersion('1.0')
@@ -18,4 +22,5 @@ async function bootstrap() {
 
   await app.listen(3000);
 }
+
 bootstrap();

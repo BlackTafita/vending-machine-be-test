@@ -22,9 +22,8 @@ import { AuthModule } from './auth/auth.module';
       migrationsTableName: '_migrations',
     }),
 
-    UserModule,
-
     AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
