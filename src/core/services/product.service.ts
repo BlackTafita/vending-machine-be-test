@@ -1,6 +1,6 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Product } from '../core/entities/product.entity';
+import { Product } from '../entities/product.entity';
 import {
   DeepPartial,
   DeleteResult,
