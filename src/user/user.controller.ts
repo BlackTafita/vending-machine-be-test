@@ -11,7 +11,11 @@ import { UserService } from '../core/services/user.service';
 import { User } from '../core/entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Public } from '../shared/decorators/is-public.decorator';
 
+@ApiTags('User')
+@ApiBearerAuth()
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
@@ -26,6 +30,7 @@ export class UserController {
     return this.userService.findOne({ where: { id: Number(id) } });
   }
 
+  @Public()
   @Post()
   async createUser(@Body() user: CreateUserDto): Promise<User> {
     return this.userService.create(user);
