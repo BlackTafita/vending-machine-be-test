@@ -98,4 +98,10 @@ export class BuyerService {
 
     return res;
   }
+
+  async resetDeposit(userId: number): Promise<boolean> {
+    return !!(await this.userService.update(userId, {
+      deposit: 0,
+    }));
+  }
 }
