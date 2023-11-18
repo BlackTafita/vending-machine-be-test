@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ProductService } from './product.service';
+import { ProductService } from '../core/services/product.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Product } from '../core/entities/product.entity';
 import { Public } from '../shared/decorators/is-public.decorator';
