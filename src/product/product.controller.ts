@@ -14,6 +14,7 @@ import { Public } from '../shared/decorators/is-public.decorator';
 import { ReqUser } from '../shared/decorators/req-user.decorator';
 import { UserRole } from '../shared/enums/user-role.enum';
 import { CreateProductDto } from './dto/create-product.dto';
+import { Roles } from '../shared/decorators/roles.decorator';
 
 @ApiTags('Product')
 @Controller('product')
@@ -27,12 +28,14 @@ export class ProductController {
   }
 
   @ApiBearerAuth()
+  @Roles(UserRole.SELLER)
   @Get(':id')
   async getProduct(@Param('id') id: string): Promise<Product> {
     return this.productService.findOne({ where: { id: Number(id) } });
   }
 
   @ApiBearerAuth()
+  @Roles(UserRole.SELLER)
   @Post()
   async createProduct(
     @Body() body: CreateProductDto,
@@ -42,6 +45,7 @@ export class ProductController {
   }
 
   @ApiBearerAuth()
+  @Roles(UserRole.SELLER)
   @Put(':id')
   async updateProduct(
     @Param('id') id: string,
@@ -51,6 +55,7 @@ export class ProductController {
   }
 
   @ApiBearerAuth()
+  @Roles(UserRole.SELLER)
   @Delete(':id')
   async deleteProduct(@Param('id') id: string): Promise<{ status: string }> {
     const result = await this.productService.delete(Number(id));
