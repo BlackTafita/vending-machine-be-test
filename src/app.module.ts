@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
@@ -8,6 +6,8 @@ import { User } from './core/entities/user.entity';
 import { Product } from './core/entities/product.entity';
 import { AuthModule } from './auth/auth.module';
 import { ProductModule } from './product/product.module';
+import { CoreModule } from './core/core.module';
+import { BuyerModule } from './buyer/buyer.module';
 
 @Module({
   imports: [
@@ -26,8 +26,8 @@ import { ProductModule } from './product/product.module';
     AuthModule,
     UserModule,
     ProductModule,
+    CoreModule,
+    BuyerModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
