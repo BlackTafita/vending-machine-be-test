@@ -10,6 +10,6 @@ export default new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  entities: ['./src/core/entities/**/*{.ts}'],
-  migrations: ['./migrations/*{.ts}'],
+  entities: ['./dist/src/core/entities/**/*{.js,.ts}'],
+  migrations: ['./migrations/*{.js,.ts}'],
 });
