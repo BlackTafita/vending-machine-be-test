@@ -30,6 +30,8 @@
 
 ```bash
 $ npm install
+// Create .env file by .env.example
+$ npm run typeorm:run-migrations
 ```
 
 ## Running the app
